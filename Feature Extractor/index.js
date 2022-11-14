@@ -2,6 +2,13 @@ console.log('Tokenizing programs...');
 
 var esprima = require('esprima');
 
-var result = esprima.parseScript('answer = 42');
+const fs = require('fs');
 
-console.log(result);
+fs.readFile('../Dataset/JavascriptSamplesNotObfuscated/JavascriptSamples/ng-jq-obfuscated.spec.js', 'utf8', (err, data) => {
+    if (err) {
+        console.error(err);
+        return;
+    }
+    var result = esprima.tokenize(data);
+    console.log(result);
+});
