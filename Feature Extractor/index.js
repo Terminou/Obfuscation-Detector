@@ -4,7 +4,7 @@ var esprima = require('esprima');
 
 const fs = require('fs');
 
-var inputPath = '../Dataset/JavascriptSamplesNotObfuscated/JavascriptSamples/';
+var inputPath = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesNotObfuscated/JavascriptSamples/';
 
 //Get all input names
 var inputFiles = fs.readdirSync(inputPath);
@@ -14,8 +14,11 @@ for (let i = 0; i < inputFiles.length; i++) {
             console.error(err);
             return;
         }
-        var result = esprima.tokenize(data);
-        //console.log(result);
+        try {
+            var result = esprima.tokenize(data);
+        } catch (error) {
+            console.log("Error!");
+        }
     });
 }
 
