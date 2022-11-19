@@ -7,21 +7,12 @@ const fs = require('fs');
 var inputPath = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesNotObfuscated/JavascriptSamples/';
 
 //Get all input names
-var inputFiles = fs.readdirSync(inputPath);
-for (let i = 0; i < inputFiles.length; i++) {
-    fs.readFile(inputPath + inputFiles[i], 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-        try {
-            var result = esprima.tokenize(data);
-        } catch (error) {
-            console.log("Error!");
-        }
-    });
+var inputNameList = fs.readdirSync(inputPath);
+for (let i = 0; i < inputNameList.length; i++) {
+    const data = fs.readFileSync(inputPath + inputNameList[i], 'utf8');
+    try {
+        var result = esprima.tokenize(data);
+    } catch (error) {
+        console.log("Error!");
+    }
 }
-
-
-
-
