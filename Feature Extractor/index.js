@@ -7,9 +7,9 @@ const fs = require('fs');
 var inputPath = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesNotObfuscated/JavascriptSamples/';
 
 //Get all input names
-var inputFiles = fs.readdirSync(inputPath);
-for (let i = 0; i < inputFiles.length; i++) {
-    fs.readFile(inputPath + inputFiles[i], 'utf8', (err, data) => {
+var inputNameList = fs.readdirSync(inputPath);
+for (let i = 0; i < inputNameList.length; i++) {
+    fs.readFile(inputPath + inputNameList[i], 'utf8', (err, data) => {
         if (err) {
             console.error(err);
             return;
