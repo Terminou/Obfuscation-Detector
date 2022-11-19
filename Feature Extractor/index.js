@@ -14,14 +14,11 @@ for (let i = 0; i < inputFiles.length; i++) {
             console.error(err);
             return;
         }
-        try {
-            var result = esprima.tokenize(data);
-        } catch (error) {
-            console.log("Error!");
-        }
     });
+
+    try {
+        var result = esprima.tokenize(data);
+    } catch (error) {
+        console.log("Error!");
+    }
 }
-
-
-
-
