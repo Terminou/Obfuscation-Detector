@@ -9,13 +9,7 @@ var inputPath = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/Javascrip
 //Get all input names
 var inputNameList = fs.readdirSync(inputPath);
 for (let i = 0; i < inputNameList.length; i++) {
-    fs.readFile(inputPath + inputNameList[i], 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-    });
-
+    const data = fs.readFileSync(inputPath + inputNameList[i], 'utf8');
     try {
         var result = esprima.tokenize(data);
     } catch (error) {
