@@ -1,0 +1,1 @@
+[{"type":"String","value":"'use strict'"},{"type":"Punctuator","value":";"},{"type":"Identifier","value":"publishExternalAPI"},{"type":"Punctuator","value":"("},{"type":"Identifier","value":"angular"},{"type":"Punctuator","value":")"},{"type":"Punctuator","value":";"}]
