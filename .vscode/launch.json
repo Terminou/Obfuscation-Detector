@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/Feature Extractor/index.js"
+            "program": "${workspaceFolder}/Feature Extractor/extractor.js"
         }
     ]
 }
