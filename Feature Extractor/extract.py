@@ -4,8 +4,8 @@ no_path = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSampl
 o_path = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesObfuscated/JavascriptSamplesObfuscated/'
 
 
-def total_number_of_lines(not_obfuscated_raw_list):
-    for data in not_obfuscated_raw_list:
+def total_number_of_lines(file_list):
+    for data in file_list:
         f = open(no_path + data)
         nr_lines = len(f.readlines())
         print(data, "-", "Total lines", nr_lines)
