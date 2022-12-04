@@ -1,13 +1,14 @@
 import os
 
-o_path = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesNotObfuscated/JavascriptSamples/'
-no_path = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesObfuscated/JavascriptSamplesObfuscated/'
+no_path = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesNotObfuscated/JavascriptSamples/'
+o_path = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesObfuscated/JavascriptSamplesObfuscated/'
 
 
 def total_number_of_lines(not_obfuscated_raw_list):
     for data in not_obfuscated_raw_list:
         f = open(no_path + data)
-        print(f.read())
+        nr_lines = len(f.readlines())
+        print(data, "-", "Total lines", nr_lines)
 
 
 print("Extracting features using AST outputs...")
