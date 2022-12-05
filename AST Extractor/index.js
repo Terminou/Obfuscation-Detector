@@ -7,10 +7,13 @@ const fs = require('fs');
 //Not obfuscated samples
 var inputPath = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesNotObfuscated/JavascriptSamples/';
 var writePath = '/Users/erenkilic/Desktop/Obfuscation Detector/AST/';
+var preprocessedPath = '/Users/erenkilic/Desktop/Obfuscation Detector/Preprocessed-Dataset-NO/';
+
 
 //Obfuscated samples
 var inputPath2 = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesObfuscated/JavascriptSamplesObfuscated/';
 var writePath2 = '/Users/erenkilic/Desktop/Obfuscation Detector/AST-Obfuscated/';
+var preprocessedPath2 = '/Users/erenkilic/Desktop/Obfuscation Detector/Preprocessed-Dataset-O/';
 
 //Get all input names
 var inputNameList = fs.readdirSync(inputPath);
