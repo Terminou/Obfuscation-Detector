@@ -24,6 +24,7 @@ for (let i = 0; i < inputNameList.length; i++) {
     const data = fs.readFileSync(inputPath + inputNameList[i], 'utf8');
     try {
         var result = esprima.tokenize(data);
+        fs.writeFileSync(preprocessedPath + inputNameList[i], data.toString(), 'utf-8');
         //Convert it to JSON format to write
         let jsonString = JSON.stringify(result);
         let outName = inputNameList[i].substring(0, inputNameList[i].indexOf('.js')) + '.ast';
@@ -38,6 +39,7 @@ for (let i = 0; i < inputNameList2.length; i++) {
     const data = fs.readFileSync(inputPath2 + inputNameList2[i], 'utf8');
     try {
         var result = esprima.tokenize(data);
+        fs.writeFileSync(preprocessedPath2 + inputNameList2[i], data.toString(), 'utf-8');
         //Convert it to JSON format to write
         let jsonString = JSON.stringify(result);
         let outName = inputNameList2[i].substring(0, inputNameList2[i].indexOf('.js')) + '.ast';
