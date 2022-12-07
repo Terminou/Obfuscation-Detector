@@ -6,14 +6,14 @@ const fs = require('fs');
 
 //Not obfuscated samples
 var inputPath = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesNotObfuscated/JavascriptSamples/';
-var writePath = '/Users/erenkilic/Desktop/Obfuscation Detector/AST/';
-var preprocessedPath = '/Users/erenkilic/Desktop/Obfuscation Detector/Preprocessed-Dataset-NO/';
+var writePath = '/Users/erenkilic/Desktop/Obfuscation Detector/AstPrograms/AstNotObfuscated/';
+var preprocessedPath = '/Users/erenkilic/Desktop/Obfuscation Detector/PreprocessedPrograms/PreprocessedNotObfuscated/';
 
 
 //Obfuscated samples
 var inputPath2 = '/Users/erenkilic/Desktop/Obfuscation Detector/Dataset/JavascriptSamplesObfuscated/JavascriptSamplesObfuscated/';
-var writePath2 = '/Users/erenkilic/Desktop/Obfuscation Detector/AST-Obfuscated/';
-var preprocessedPath2 = '/Users/erenkilic/Desktop/Obfuscation Detector/Preprocessed-Dataset-O/';
+var writePath2 = '/Users/erenkilic/Desktop/Obfuscation Detector/AstPrograms/AstObfuscated/';
+var preprocessedPath2 = '/Users/erenkilic/Desktop/Obfuscation Detector/PreprocessedPrograms/PreprocessedObfuscated/';
 
 //Get all input names
 var inputNameList = fs.readdirSync(inputPath);
