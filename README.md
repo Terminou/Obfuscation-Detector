@@ -6,4 +6,4 @@ Dataset is taken from https://www.kaggle.com/datasets/fanbyprinciple/obfuscated-
 
 | Obfuscated      | Not Obfuscated |
 | -----------     | -------------- |
-| 1477            | 1734           |
+|    1477         |      1734      |
