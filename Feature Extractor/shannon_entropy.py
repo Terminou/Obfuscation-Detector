@@ -8,10 +8,9 @@ def shannon_entropy(data):
     for character in data:
         stack[character] = round(data.count(character) / len(data), 5)
         symbol_list[character] = data.count(character)
-    print("\nSymbol-occurrence frequencies:\n")
-    for symbol in stack:
-        print("{0} --> {1} -- {2}".format(symbol,
-              stack[symbol], symbol_list[symbol]))
+    # print("\nSymbol-occurrence frequencies:\n")
+    # for symbol in stack:
+    # print("{0} --> {1} -- {2}".format(symbol, stack[symbol], symbol_list[symbol]))
     return symbol_frequency(stack)
 
 

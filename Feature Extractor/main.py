@@ -1,4 +1,4 @@
-from features import  *
+from features import *
 input_file = "raw_o_example.js"
 
 total_nr_lines = total_number_of_lines(input_file)
