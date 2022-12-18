@@ -102,8 +102,10 @@ def share_of_chars_belonging_comments(path):
 
     # Iterate over the lines
     for line in lines:
+        # Trim leading space
+        line = line.lstrip()
         # Check if the line is a comment
-        if line.startswith("//") or line.startswith("/*"):
+        if line.startswith("//") or line.startswith("/*") or line.startswith("*"):
             # If it is, add the length of the line to the counter
             num_chars_in_comments += len(line)
 

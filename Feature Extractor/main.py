@@ -28,5 +28,5 @@ print("F7- Share of chars belonging string:", share_of_chars_belonging_string)
 share_of_space_chars = share_of_space_characters(input_file)
 print("F8- Share of space characters:", share_of_space_chars)
 
-share_of_comments = share_of_chars_belonging_comments(input_file)
+share_of_comments = share_of_chars_belonging_comments(input_file3)
 print("F9 - Share of chars belonging comments", share_of_comments)
