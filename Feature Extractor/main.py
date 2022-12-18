@@ -16,3 +16,5 @@ print("Ratio of thousand character line:", ratio_of_thousand_character_line)
 shannon_entropy = shannon_entropy_of_file(input_file)
 print("Shannon entropy of file", shannon_entropy)
 
+avg_string_len = avg_string_len(input_file)
+print("Average string length of file", avg_string_len)

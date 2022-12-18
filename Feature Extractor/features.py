@@ -42,5 +42,16 @@ def ratio_of_thousand_character_lines(path):
 def shannon_entropy_of_file(path):
     f = open(path)
     data = f.read()
+    f.close()
     bits = shannon_entropy(data)
     return bits / len(data)
+
+
+# Feature 6 - Average string lenght
+def avg_string_len(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    words = data.split()
+    average_length = sum(len(word) for word in words) / len(words)
+    return average_length
