@@ -59,16 +59,21 @@ def avg_string_len(path):
 
 
 # Feature 7 - Share of chars belonging to a string
-def share_of_chars(path):
-    # Load the JSON object from a file or string
-    with open(path, 'r') as f:
-        tokenized = json.load(f)
+def share_of_chars(path_raw, path_ast):
+    # Find the number of chars
+    f = open(path_raw)
+    data = f.read()
+    nr_chars = len(data)
 
+    # Load the JSON object from a file or string
+    with open(path_ast, 'r') as f:
+        tokenized = json.load(f)
     f.close()
+
     string_count = 0
     for token in tokenized:
         # Check if the token is a string literal
         if token['type'] == 'String':
             # Increment the counter
             string_count += 1
-    return string_count
+    return string_count / nr_chars

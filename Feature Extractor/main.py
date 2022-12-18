@@ -1,6 +1,6 @@
 from features import *
-input_file = "raw_o_example.js"
-input_file2 = "ast_o_example.ast"
+input_file = "_stream_transform-obfuscated.js"
+input_file2 = "_stream_transform-obfuscated.ast"
 
 total_nr_lines = total_number_of_lines(input_file)
 print("Total lines:", total_nr_lines)
@@ -20,5 +20,5 @@ print("Shannon entropy of file:", shannon_entropy)
 avg_string_len = avg_string_len(input_file)
 print("Average string length of file:", avg_string_len)
 
-share_of_chars_belonging_string = share_of_chars(input_file2)
+share_of_chars_belonging_string = share_of_chars(input_file, input_file2)
 print("Share of chars belonging string:", share_of_chars_belonging_string)
