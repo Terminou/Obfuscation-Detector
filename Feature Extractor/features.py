@@ -77,3 +77,37 @@ def share_of_chars(path_raw, path_ast):
             # Increment the counter
             string_count += 1
     return string_count / nr_chars
+
+
+# Feature 8 - Share of space characters
+def share_of_space_characters(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    space_count = data.count(" ")
+    nr_chars = len(data)
+    return space_count / nr_chars
+
+
+# Feature 9 - Share of chars belonging to comments
+def share_of_chars_belonging_comments(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    # Split the code into lines
+    lines = data.split("\n")
+
+    # Initialize a counter for the number of characters in comments
+    num_chars_in_comments = 0
+
+    # Iterate over the lines
+    for line in lines:
+        # Check if the line is a comment
+        if line.startswith("//") or line.startswith("/*"):
+            # If it is, add the length of the line to the counter
+            num_chars_in_comments += len(line)
+
+    # Calculate the percentage of characters in comments
+    comment_share = num_chars_in_comments / len(data)
+
+    return comment_share
