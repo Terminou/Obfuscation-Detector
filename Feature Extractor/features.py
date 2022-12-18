@@ -1,5 +1,5 @@
 from shannon_entropy import *
-
+import json
 
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
@@ -55,3 +55,19 @@ def avg_string_len(path):
     words = data.split()
     average_length = sum(len(word) for word in words) / len(words)
     return average_length
+
+
+# Feature 7 - Share of chars belonging to a string
+def share_of_chars(path):
+    # Load the JSON object from a file or string
+    with open(path, 'r') as f:
+        tokenized = json.load(f)
+
+    f.close()
+    string_count = 0
+    for token in tokenized:
+        # Check if the token is a string literal
+        if token['type'] == 'String':
+            # Increment the counter
+            string_count += 1
+    return string_count
