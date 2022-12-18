@@ -1,6 +1,7 @@
 from shannon_entropy import *
 import json
 
+
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
     f = open(path)
