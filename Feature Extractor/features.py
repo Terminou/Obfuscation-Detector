@@ -21,9 +21,9 @@ def avg_number_of_chars_per_line(path):
 # Feature 3 - # of chars in script
 def number_of_chars(path):
     f = open(path)
-    nr_Chars = len(f.read())
+    nr_chars = len(f.read())
     f.close()
-    return nr_Chars
+    return nr_chars
 
 
 # Feature 4 - % of lines > 1000 chars
