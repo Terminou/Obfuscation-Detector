@@ -163,3 +163,35 @@ def avg_nr_of_chars_per_function_body(path):
 
     # Calculate the average number of characters per function body
     return total_chars / num_functions
+
+
+# Feature 12 - Share of chars belonging to function bodies
+def char_ratio_in_function_bodies(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    # Tokenize the JavaScript code
+    tokens = esprima.tokenize(data)
+
+    # Initialize a counter for the total number of characters in function bodies and total number of functions
+    num_functions = 0
+    total_chars = 0
+
+    # Iterate through the tokens
+    for token in tokens:
+        # If the token represents the start of a function body, start counting characters
+        if token.type == 'Punctuator' and token.value == '{':
+            num_functions += 1
+            char_count = 0
+            # Continue counting characters until the end of the function body is reached
+            tokens = iter(tokens)
+            while True:
+                token = next(tokens)
+                if token.type == 'Punctuator' and token.value == '}':
+                    break
+                char_count += len(token.value)
+            # Add the character count for this function body to the total
+            total_chars += char_count
+
+    # Calculate the average number of characters per function body
+    return total_chars / len(data)

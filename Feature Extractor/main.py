@@ -35,3 +35,6 @@ print("F10 - Number of eval calls divided by F3:", nr_eval_calls_divided_by_f3)
 
 avg_nr_of_chars_per_function_body = avg_nr_of_chars_per_function_body(input_file)
 print("F11 - Average number of chars per function body:", avg_nr_of_chars_per_function_body)
+
+char_ratio_in_function_bodies = char_ratio_in_function_bodies(input_file)
+print("F12 - Share of chars belonging to function bodies:", char_ratio_in_function_bodies)
