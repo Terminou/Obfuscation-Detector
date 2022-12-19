@@ -1,6 +1,6 @@
 from shannon_entropy import *
 import json
-
+import esprima
 
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
@@ -134,6 +134,7 @@ def nr_of_eval_calls_ratio(path_raw, path_ast):
             # Increment the counter
             eval_count += 1
     return eval_count / nr_chars
+
 
 # Feature 11 - Average number of chars per function body
 def avg_nr_of_chars_per_function_body(path_ast):

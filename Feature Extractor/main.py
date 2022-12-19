@@ -34,3 +34,5 @@ print("F9 - Share of chars belonging comments:", share_of_comments)
 nr_eval_calls_divided_by_f3 = nr_of_eval_calls_ratio(input_file, input_file2)
 print("F10 - Number of eval calls divided by F3:", nr_eval_calls_divided_by_f3)
 
+avg_nr_of_chars_per_function_body = avg_nr_of_chars_per_function_body(input_file2)
+print("F11 - Average number of chars per function body:", avg_nr_of_chars_per_function_body)
