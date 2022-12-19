@@ -113,3 +113,24 @@ def share_of_chars_belonging_comments(path):
     comment_share = num_chars_in_comments / len(data)
 
     return comment_share
+
+
+# Feature 10 - Number of eval calls divided by F3
+def nr_of_eval_calls_ratio(path_raw, path_ast):
+    # Find the number of chars
+    f = open(path_raw)
+    data = f.read()
+    nr_chars = len(data)
+
+    # Load the JSON object from a file or string
+    with open(path_ast, 'r') as f:
+        tokenized = json.load(f)
+    f.close()
+
+    eval_count = 0
+    for token in tokenized:
+        # Check if the token is a string literal
+        if token['type'] == 'Identifier' and token["value"] == 'eval':
+            # Increment the counter
+            eval_count += 1
+    return eval_count / nr_chars
