@@ -1,5 +1,4 @@
 from shannon_entropy import *
-import json
 import esprima
 
 # Feature 1 - total number of lines
@@ -48,7 +47,7 @@ def shannon_entropy_of_file(path):
     return bits / len(data)
 
 
-# Feature 6 - Average string lenght
+# Feature 6 - Average string length
 def avg_string_len(path):
     f = open(path)
     data = f.read()
@@ -59,24 +58,22 @@ def avg_string_len(path):
 
 
 # Feature 7 - Share of chars belonging to a string
-def share_of_chars(path_raw, path_ast):
+def share_of_chars(path):
     # Find the number of chars
-    f = open(path_raw)
+    f = open(path)
     data = f.read()
     nr_chars = len(data)
 
-    # Load the JSON object from a file or string
-    with open(path_ast, 'r') as f:
-        tokenized = json.load(f)
+    tokenized = esprima.tokenize(data)
     f.close()
 
-    string_count = 0
+    total_string_len = 0
     for token in tokenized:
         # Check if the token is a string literal
-        if token['type'] == 'String':
+        if token.type == 'String':
             # Increment the counter
-            string_count += 1
-    return string_count / nr_chars
+            total_string_len += len(token.value)
+    return total_string_len / nr_chars
 
 
 # Feature 8 - Share of space characters
@@ -116,52 +113,35 @@ def share_of_chars_belonging_comments(path):
 
 
 # Feature 10 - Number of eval calls divided by F3
-def nr_of_eval_calls_ratio(path_raw, path_ast):
+def nr_of_eval_calls_ratio(path):
     # Find the number of chars
-    f = open(path_raw)
+    f = open(path)
     data = f.read()
     nr_chars = len(data)
 
-    # Load the JSON object from a file or string
-    with open(path_ast, 'r') as f:
-        tokenized = json.load(f)
+    tokenized = esprima.tokenize(data)
     f.close()
 
     eval_count = 0
     for token in tokenized:
         # Check if the token is a string literal
-        if token['type'] == 'Identifier' and token["value"] == 'eval':
+        if token.type == 'Identifier' and token.value == 'eval':
             # Increment the counter
             eval_count += 1
     return eval_count / nr_chars
 
 
 # Feature 11 - Average number of chars per function body
-def avg_nr_of_chars_per_function_body(path_ast):
-    f = open(path_ast)
+def avg_nr_of_chars_per_function_body(path):
+    f = open(path)
     data = f.read()
     f.close()
-    # Tokenize the JavaScript code
-    tokens = esprima.tokenize(data)
-
-    # Initialize a counter for the total number of characters in function bodies and total number of functions
-    num_functions = 0
+    ast = esprima.parseScript(data)
     total_chars = 0
-
-    # Iterate through the tokens
-    for token in tokens:
-        # If the token represents the start of a function body, start counting characters
-        if token['type'] == 'Punctuator' and token['value'] == '{':
+    num_functions = 0
+    for node in ast.body:
+        if node.type == 'FunctionDeclaration':
+            num_chars = len(node.type['source'])
+            total_chars += num_chars
             num_functions += 1
-            char_count = 0
-            # Continue counting characters until the end of the function body is reached
-            while True:
-                token = next(tokens)
-                if token['type'] == 'Punctuator' and token['value'] == '}':
-                    break
-                char_count += len(token['value'])
-            # Add the character count for this function body to the total
-            total_chars += char_count
-
-    # Calculate the average number of characters per function body
-    avg_chars_per_function = total_chars / num_functions
+    return total_chars / num_functions
