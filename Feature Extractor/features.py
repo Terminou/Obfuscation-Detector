@@ -2,6 +2,7 @@ from shannon_entropy import *
 import esprima
 from statistics import *
 
+
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
     f = open(path)
@@ -224,7 +225,8 @@ def nr_of_func_definitions_ratio(path):
 
 # Feature 15 - Number of special Javascript elements divided by F3
 def nr_of_special_js_elements_ratio(path):
-    special_elements = ['eval', 'unescape', 'String.fromCharCode', 'String.charCodeAt', 'window', 'document', 'string', 'array', 'object']
+    special_elements = ['eval', 'unescape', 'String.fromCharCode', 'String.charCodeAt', 'window', 'document', 'string',
+                        'array', 'object']
     f = open(path)
     data = f.read()
     f.close()
@@ -232,8 +234,53 @@ def nr_of_special_js_elements_ratio(path):
     count = 0
     for node in tree.body:
         if node.type == 'ExpressionStatement':
-            if node.expression.type== 'Call Expression':
+            if node.expression.type == 'Call Expression':
                 if node.expression.callee.name in special_elements:
                     count += 1
     return count / number_of_chars(path)
 
+
+# Feature 16 - Number of renamed special JavaScript elements divided by F3
+
+# Feature 17 - Share of encoded characters
+def encoded_chars_ratio(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    # Parse the program using esprima
+    ast = esprima.parseScript(data)
+
+    # Count the number of encoded characters in the program
+    encoded_char_count = 0
+    for node in ast.body:
+        if node.type == 'ExpressionStatement':
+            expression = node.expression
+            if expression.type == 'CallExpression':
+                callee = expression.callee
+                if callee.type == 'Identifier' and callee.name == 'decodeURIComponent':
+                    # decodeURIComponent is a function that decodes encoded characters, so
+                    # increment the encoded character count
+                    encoded_char_count += 1
+
+    # Calculate the share of encoded characters in the program
+    char_count = len(data)
+    encoded_char_share = encoded_char_count / char_count
+    return encoded_char_share
+
+
+# Feature 18 - Share of backslash characters
+def backslash_chars_ratio(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    return data.count('\\') / number_of_chars(data)
+
+
+# Feature 19 - Share of pipe characters
+def pipe_chars_ratio(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    return data.count('|') / number_of_chars(data)
+
+# Feature 20 - Number of array accesses using dot or bracket syntax divided by F3
