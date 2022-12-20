@@ -220,3 +220,20 @@ def nr_of_func_definitions_ratio(path):
         if node.type == 'FunctionDeclaration':
             count += 1
     return count / number_of_chars(path)
+
+
+# Feature 15 - Number of special Javascript elements divided by F3
+def nr_of_special_js_elements_ratio(path):
+    special_elements = ['eval', 'unescape', 'String.fromCharCode', 'String.charCodeAt', 'window', 'document', 'string', 'array', 'object']
+    f = open(path)
+    data = f.read()
+    f.close()
+    tree = esprima.parse(data)
+    count = 0
+    for node in tree.body:
+        if node.type == 'ExpressionStatement':
+            if node.expression.type== 'Call Expression':
+                if node.expression.callee.name in special_elements:
+                    count += 1
+    return count / number_of_chars(path)
+
