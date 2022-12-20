@@ -38,3 +38,6 @@ print("F11 - Average number of chars per function body:", avg_nr_of_chars_per_fu
 
 char_ratio_in_function_bodies = char_ratio_in_function_bodies(input_file)
 print("F12 - Share of chars belonging to function bodies:", char_ratio_in_function_bodies)
+
+avg_nr_of_args_per_func = avg_nr_args_per_function(input_file)
+print("F13 - Average number of arguments per function:", avg_nr_of_args_per_func)

@@ -1,5 +1,6 @@
 from shannon_entropy import *
 import esprima
+from statistics import *
 
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
@@ -193,3 +194,17 @@ def char_ratio_in_function_bodies(path):
 
     # Calculate the average number of characters per function body
     return total_chars / len(data)
+
+
+# Feature 13 - Average number of arguments per function
+def avg_nr_args_per_function(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    tree = esprima.parse(data)
+    functions = []
+    for node in tree.body:
+        if node.type == 'FunctionDeclaration':
+            functions.append(len(node.params))
+    return mean(functions)
+
