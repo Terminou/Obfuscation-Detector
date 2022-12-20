@@ -1,5 +1,3 @@
-import acorn
-
 from shannon_entropy import *
 import esprima
 
