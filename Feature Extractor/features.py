@@ -208,3 +208,15 @@ def avg_nr_args_per_function(path):
             functions.append(len(node.params))
     return mean(functions)
 
+
+# Feature 14 - Number of function definitions divided by F3
+def nr_of_func_definitions_ratio(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    tree = esprima.parse(data)
+    count = 0
+    for node in tree.body:
+        if node.type == 'FunctionDeclaration':
+            count += 1
+    return count / number_of_chars(path)

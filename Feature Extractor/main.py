@@ -41,3 +41,6 @@ print("F12 - Share of chars belonging to function bodies:", char_ratio_in_functi
 
 avg_nr_of_args_per_func = avg_nr_args_per_function(input_file)
 print("F13 - Average number of arguments per function:", avg_nr_of_args_per_func)
+
+nr_func_definitions_ratio = nr_of_func_definitions_ratio(input_file)
+print("F14 - Number of function definitions divided by F3", nr_func_definitions_ratio)
