@@ -273,7 +273,7 @@ def backslash_chars_ratio(path):
     f = open(path)
     data = f.read()
     f.close()
-    return data.count('\\') / number_of_chars(data)
+    return data.count('\\') / number_of_chars(path)
 
 
 # Feature 19 - Share of pipe characters
@@ -281,6 +281,6 @@ def pipe_chars_ratio(path):
     f = open(path)
     data = f.read()
     f.close()
-    return data.count('|') / number_of_chars(data)
+    return data.count('|') / number_of_chars(path)
 
 # Feature 20 - Number of array accesses using dot or bracket syntax divided by F3
