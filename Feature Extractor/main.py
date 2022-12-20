@@ -43,7 +43,18 @@ avg_nr_of_args_per_func = avg_nr_args_per_function(input_file)
 print("F13 - Average number of arguments per function:", avg_nr_of_args_per_func)
 
 nr_func_definitions_ratio = nr_of_func_definitions_ratio(input_file)
-print("F14 - Number of function definitions divided by F3", nr_func_definitions_ratio)
+print("F14 - Number of function definitions divided by F3:", nr_func_definitions_ratio)
 
 nr_of_special_js_elements_ratio = nr_of_special_js_elements_ratio(input_file)
-print("F15 - Number of special Javascript elements divided by F3", nr_of_special_js_elements_ratio)
+print("F15 - Number of special Javascript elements divided by F3:", nr_of_special_js_elements_ratio)
+
+print("F16 - Number of renamed special JavaScript elements divided by F3:")
+
+share_of_encoded_chars = encoded_chars_ratio(input_file)
+print("F17 - Share of encoded characters:", share_of_encoded_chars)
+
+share_of_backslash = backslash_chars_ratio(input_file)
+print("F18 - Share of backslash characters:", share_of_backslash)
+
+share_of_pipe = pipe_chars_ratio(input_file)
+print("F19 - Share of pipe characters:", share_of_pipe)
