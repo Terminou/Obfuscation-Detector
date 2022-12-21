@@ -58,3 +58,6 @@ print("F18 - Share of backslash characters:", share_of_backslash)
 
 share_of_pipe = pipe_chars_ratio(input_file)
 print("F19 - Share of pipe characters:", share_of_pipe)
+
+nr_of_array_access = number_of_array_access(input_file)
+print("F20 - Number of array accesses using dot or bracket syntax divided by F3:", nr_of_array_access)
