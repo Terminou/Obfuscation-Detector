@@ -61,3 +61,6 @@ print("F19 - Share of pipe characters:", share_of_pipe)
 
 nr_of_array_access = number_of_array_access(input_file)
 print("F20 - Number of array accesses using dot or bracket syntax divided by F3:", nr_of_array_access)
+
+freq_common_word = freq_of_common_keyword('while', input_file)
+print("F21 - Frequency of 25 common JS keywords:", freq_common_word)

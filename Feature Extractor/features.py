@@ -298,3 +298,15 @@ def number_of_array_access(path):
     array_access_count = len(array_access_tokens)
     return array_access_count / number_of_chars(path)
 
+
+# Feature 21 - 45 - Frequency of 25 common JS keywords
+def freq_of_common_keyword(keyword, path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    parsed = esprima.parse(data, tokens=True)
+    count = 0
+    for token in parsed.tokens:
+        if token.type == 'Keyword' and token.value == keyword:
+            count += 1
+    return count
