@@ -283,4 +283,18 @@ def pipe_chars_ratio(path):
     f.close()
     return data.count('|') / number_of_chars(path)
 
+
 # Feature 20 - Number of array accesses using dot or bracket syntax divided by F3
+def number_of_array_access(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    parsed = esprima.parse(data, tokens=True)
+    array_access_tokens = []
+    for token in parsed.tokens:
+        if token.type in ['Punctuator', 'Identifier']:
+            if token.value in ['.', '[']:
+                array_access_tokens.append(token)
+    array_access_count = len(array_access_tokens)
+    return array_access_count / number_of_chars(path)
+
