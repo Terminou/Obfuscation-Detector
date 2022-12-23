@@ -1,7 +1,7 @@
 from shannon_entropy import *
 import esprima
 from statistics import *
-
+from spellchecker import SpellChecker
 
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
@@ -310,3 +310,11 @@ def freq_of_common_keyword(keyword, path):
         if token.type == 'Keyword' and token.value == keyword:
             count += 1
     return count
+
+
+# Feature 46 - Meaningful words ratio (checked for top 3 languages: ENG, SPA, FRA)
+def meaningful_words_ratio(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    spell = SpellChecker()
