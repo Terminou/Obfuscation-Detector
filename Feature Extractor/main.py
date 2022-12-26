@@ -64,3 +64,6 @@ print("F20 - Number of array accesses using dot or bracket syntax divided by F3:
 
 freq_common_word = freq_of_common_keyword('while', input_file)
 print("F21 - Frequency of 25 common JS keywords:", freq_common_word)
+
+meaningful_words_ratio = meaningful_words_ratio(input_file)
+print("F46 - Share of meaningful words:", meaningful_words_ratio)

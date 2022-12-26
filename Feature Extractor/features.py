@@ -1,7 +1,10 @@
 from shannon_entropy import *
 import esprima
 from statistics import *
-from spellchecker import SpellChecker
+import nltk
+nltk.download('words')
+nltk.download('cess_esp')
+nltk.download('cess_cat')
 
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
@@ -325,4 +328,33 @@ def meaningful_words_ratio(path):
     f = open(path)
     data = f.read()
     f.close()
-    spell = SpellChecker()
+    words = data.split(" ")
+    count = 0
+    for word in words:
+        if is_english_word(word) or is_spanish_word(word) or is_french_word(word):
+            count += 1
+    return count / len(words)
+
+
+def is_english_word(word):
+    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
+    if word.lower() in english_vocab:
+        return True
+    else:
+        return False
+
+
+def is_spanish_word(word):
+    spanish_vocab = set(w.lower() for w in nltk.corpus.cess_esp.words())
+    if word.lower() in spanish_vocab:
+        return True
+    else:
+        return False
+
+
+def is_french_word(word):
+    french_vocab = set(w.lower() for w in nltk.corpus.cess_cat.words())
+    if word.lower() in french_vocab:
+        return True
+    else:
+        return False
