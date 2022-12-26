@@ -54,9 +54,17 @@ def avg_string_len(path):
     f = open(path)
     data = f.read()
     f.close()
-    words = data.split()
-    average_length = sum(len(word) for word in words) / len(words)
-    return average_length
+    tokenized = esprima.tokenize(data)
+    f.close()
+    count = 0
+    total_string_len = 0
+    for token in tokenized:
+        # Check if the token is a string literal
+        if token.type == 'String':
+            # Increment the counter
+            count += 1
+            total_string_len += len(token.value)
+    return total_string_len / count
 
 
 # Feature 7 - Share of chars belonging to a string
