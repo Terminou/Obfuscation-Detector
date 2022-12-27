@@ -218,7 +218,10 @@ def avg_nr_args_per_function(path):
     for node in tree.body:
         if node.type == 'FunctionDeclaration':
             functions.append(len(node.params))
-    return mean(functions)
+    if len(functions) == 0:
+        return 0
+    else:
+        return mean(functions)
 
 
 # Feature 14 - Number of function definitions divided by F3
