@@ -2,9 +2,7 @@ from shannon_entropy import *
 import esprima
 from statistics import *
 import nltk
-nltk.download('words')
-nltk.download('cess_esp')
-nltk.download('cess_cat')
+
 
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
@@ -213,6 +211,7 @@ def avg_nr_args_per_function(path):
     f = open(path)
     data = f.read()
     f.close()
+    print("Finding", path, "...")
     tree = esprima.parse(data)
     functions = []
     for node in tree.body:

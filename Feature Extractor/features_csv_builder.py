@@ -5,8 +5,15 @@ import csv
 # Set the directory you want to list the files from
 directory = '../PreprocessedPrograms/PreprocessedNotObfuscated/'
 
+f = open(directory + "night-mode-saga.js")
+data = f.read()
+f.close()
+tree = esprima.parseScript(data)
+
 # Use the listdir() function to get the list of files
-files = os.listdir(directory)
+files = sorted(os.listdir(directory), key=str.casefold)[1:]
+for f in files:
+    print(f)
 
 # Build a list of strings from F1 to F46
 fields = []
