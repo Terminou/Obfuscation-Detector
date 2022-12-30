@@ -1,1 +1,0 @@
-[{"type":"Identifier","value":"global"},{"type":"Punctuator","value":"."},{"type":"Identifier","value":"fetch"},{"type":"Punctuator","value":"="},{"type":"Identifier","value":"require"},{"type":"Punctuator","value":"("},{"type":"String","value":"'jest-fetch-mock'"},{"type":"Punctuator","value":")"},{"type":"Punctuator","value":";"}]
