@@ -1,17 +1,19 @@
 import math
+from collections import Counter
+
+import math
 
 
-def shannon_entropy(data):
-    stack = {}
-    symbol_list = {}
+def shannon_entropy(string):
+    "Calculates the Shannon entropy of a string"
 
-    for character in data:
-        stack[character] = round(data.count(character) / len(data), 5)
-        symbol_list[character] = data.count(character)
-    # print("\nSymbol-occurrence frequencies:\n")
-    # for symbol in stack:
-    # print("{0} --> {1} -- {2}".format(symbol, stack[symbol], symbol_list[symbol]))
-    return symbol_frequency(stack)
+    # get probability of chars in string
+    prob = [ float(string.count(c)) / len(string) for c in dict.fromkeys(list(string)) ]
+
+    # calculate the entropy
+    entropy = - sum([ p * math.log(p) / math.log(2.0) for p in prob ])
+
+    return entropy
 
 
 def symbol_frequency(symbol_set):

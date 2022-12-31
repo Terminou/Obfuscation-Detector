@@ -2,7 +2,7 @@ from shannon_entropy import *
 import esprima
 from statistics import *
 import nltk
-
+from scipy.stats import entropy
 
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
@@ -47,7 +47,7 @@ def shannon_entropy_of_file(path):
     data = f.read()
     f.close()
     bits = shannon_entropy(data)
-    return bits / len(data)
+    return bits * 8 / len(data)
 
 
 # Feature 6 - Average string length
@@ -65,6 +65,8 @@ def avg_string_len(path):
             # Increment the counter
             count += 1
             total_string_len += len(token.value)
+    if count is 0:
+        return total_string_len
     return total_string_len / count
 
 
@@ -171,6 +173,8 @@ def avg_nr_of_chars_per_function_body(path):
             total_chars += char_count
 
     # Calculate the average number of characters per function body
+    if num_functions is 0:
+        return total_chars
     return total_chars / num_functions
 
 
