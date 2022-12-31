@@ -13,7 +13,7 @@ for f in files:
 
 # Build a list of strings from F1 to F46
 fields = []
-for i in range(1, 47):
+for i in range(1, 46):
     fields.append('F{}'.format(i))
 
 # Open a file in write mode
@@ -41,7 +41,10 @@ with open('features_no.csv', 'w', newline='') as csv_file:
                 avg_nr_args_per_function(input_file),
                 nr_of_func_definitions_ratio(input_file),
                 nr_of_special_js_elements_ratio(input_file),
+                #TODO: Feature 16 - Number of renamed special JavaScript elements divided by F3
+                encoded_chars_ratio(input_file),
                 backslash_chars_ratio(input_file),
+                pipe_chars_ratio(input_file),
                 number_of_array_access(input_file),
                 freq_of_common_keyword('break', input_file),
                 freq_of_common_keyword('case', input_file),
