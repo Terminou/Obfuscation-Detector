@@ -68,7 +68,7 @@ with open('features_no.csv', 'w', newline='') as csv_file:
                 freq_of_common_keyword('toString', input_file),
                 freq_of_common_keyword('valueOf', input_file),
                 freq_of_common_keyword('undefined', input_file),
-                #meaningful_words_ratio(input_file)
+                meaningful_words_ratio(input_file)
             ]
         )
 
