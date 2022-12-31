@@ -1,8 +1,7 @@
 from shannon_entropy import *
 import esprima
 from statistics import *
-import nltk
-from scipy.stats import entropy
+import enchant
 
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
@@ -329,38 +328,25 @@ def freq_of_common_keyword(keyword, path):
     return count
 
 
-# Feature 46 - Meaningful words ratio (checked for top 3 languages: ENG, SPA, FRA)
+# Feature 46 - Meaningful words ratio (checked for  3 languages: ENG, GER, FRA)
 def meaningful_words_ratio(path):
     f = open(path)
     data = f.read()
     f.close()
-    words = data.split(" ")
-    count = 0
+    words = data.split()
+    en = enchant.Dict("en_US")
+    #de = enchant.Dict("de_DE")
+    #fr = enchant.Dict("fr_FR")
+
+    count_en = 0
+    count_de = 0
+    count_fr = 0
+
     for word in words:
-        if is_english_word(word) or is_spanish_word(word) or is_french_word(word):
-            count += 1
-    return count / len(words)
-
-
-def is_english_word(word):
-    english_vocab = set(w.lower() for w in nltk.corpus.words.words())
-    if word.lower() in english_vocab:
-        return True
-    else:
-        return False
-
-
-def is_spanish_word(word):
-    spanish_vocab = set(w.lower() for w in nltk.corpus.cess_esp.words())
-    if word.lower() in spanish_vocab:
-        return True
-    else:
-        return False
-
-
-def is_french_word(word):
-    french_vocab = set(w.lower() for w in nltk.corpus.cess_cat.words())
-    if word.lower() in french_vocab:
-        return True
-    else:
-        return False
+        if en.check(word):
+            count_en += 1
+        # if de.check(word):
+        #     count_de += 1
+        # if fr.check(word):
+        #     count_fr += 1
+    return max(count_en, count_de, count_fr) / number_of_chars(path)
