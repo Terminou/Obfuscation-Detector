@@ -50,7 +50,7 @@ Attributes:   46
               F44
               F45
               Class
-Test mode:    10-fold cross-validation
+Test mode:    split 65.0% train, remainder test
 
 === Classifier model (full training set) ===
 
@@ -332,30 +332,33 @@ F45
 
 
 
-Time taken to build model: 0.04 seconds
+Time taken to build model: 0.01 seconds
 
-=== Stratified cross-validation ===
+=== Evaluation on test split ===
+
+Time taken to test model on test split: 0.03 seconds
+
 === Summary ===
 
-Correctly Classified Instances        2157               89.0219 %
-Incorrectly Classified Instances       266               10.9781 %
-Kappa statistic                          0.7805
-Mean absolute error                      0.1096
-Root mean squared error                  0.3114
-Relative absolute error                 22.1732 %
-Root relative squared error             62.6484 %
-Total Number of Instances             2423     
+Correctly Classified Instances         789               93.0425 %
+Incorrectly Classified Instances        59                6.9575 %
+Kappa statistic                          0.8576
+Mean absolute error                      0.0747
+Root mean squared error                  0.2482
+Relative absolute error                 15.1202 %
+Root relative squared error             50.088  %
+Total Number of Instances              848     
 
 === Detailed Accuracy By Class ===
 
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
-                 0.852    0.062    0.945      0.852    0.896      0.785    0.964     0.949     Not-obfuscated
-                 0.938    0.148    0.836      0.938    0.884      0.785    0.963     0.966     Obfuscated
-Weighted Avg.    0.890    0.101    0.896      0.890    0.891      0.785    0.963     0.957     
+                 0.946    0.091    0.933      0.946    0.940      0.858    0.963     0.955     Not-obfuscated
+                 0.909    0.054    0.927      0.909    0.918      0.858    0.963     0.969     Obfuscated
+Weighted Avg.    0.930    0.075    0.930      0.930    0.930      0.858    0.963     0.961     
 
 === Confusion Matrix ===
 
-    a    b   <-- classified as
- 1142  199 |    a = Not-obfuscated
-   67 1015 |    b = Obfuscated
+   a   b   <-- classified as
+ 459  26 |   a = Not-obfuscated
+  33 330 |   b = Obfuscated
 
