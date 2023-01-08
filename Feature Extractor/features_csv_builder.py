@@ -11,7 +11,7 @@ files = sorted(os.listdir(directory), key=str.casefold)[1:]
 
 # Build a list of strings from F1 to F46
 fields = []
-for i in range(1, 46):
+for i in range(1, 47):
     fields.append('F{}'.format(i))
 fields.append('Class')
 
@@ -71,6 +71,7 @@ with open('features.csv', 'w', newline='') as csv_file:
                 freq_of_common_keyword('valueOf', input_file),
                 freq_of_common_keyword('undefined', input_file),
                 meaningful_words_ratio(input_file),
+                trigram_words_ratio(input_file),
                 'Not-obfuscated'
             ]
         )
@@ -138,6 +139,7 @@ with open('features.csv', 'a', newline='') as csv_file:
                     freq_of_common_keyword('valueOf', input_file),
                     freq_of_common_keyword('undefined', input_file),
                     meaningful_words_ratio(input_file),
+                    trigram_words_ratio(input_file),
                     'Obfuscated'
                 ]
             )
