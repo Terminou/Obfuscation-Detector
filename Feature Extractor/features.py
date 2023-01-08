@@ -2,6 +2,8 @@ from shannon_entropy import *
 import esprima
 from statistics import *
 import enchant
+from nltk.util import ngrams
+
 
 # Feature 1 - total number of lines
 def total_number_of_lines(path):
@@ -335,8 +337,8 @@ def meaningful_words_ratio(path):
     f.close()
     words = data.split()
     en = enchant.Dict("en_US")
-    #de = enchant.Dict("de_DE")
-    #fr = enchant.Dict("fr_FR")
+    # de = enchant.Dict("de_DE")
+    # fr = enchant.Dict("fr_FR")
 
     count_en = 0
     count_de = 0
@@ -350,3 +352,15 @@ def meaningful_words_ratio(path):
         # if fr.check(word):
         #     count_fr += 1
     return max(count_en, count_de, count_fr) / number_of_chars(path)
+
+
+# Feature 47 - Trigram words ratio
+def trigram_words_ratio(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    # Split the text into a list of tokens
+    tokens = data.split()
+    # Use the ngrams function to generate the n-grams
+    ngrams_list = list(ngrams(tokens, 3))
+    return len(ngrams_list) / number_of_chars(path)
