@@ -337,8 +337,8 @@ def meaningful_words_ratio(path):
     f.close()
     words = data.split()
     en = enchant.Dict("en_US")
-    # de = enchant.Dict("de_DE")
-    # fr = enchant.Dict("fr_FR")
+    de = enchant.Dict("de_DE")
+    fr = enchant.Dict("fr_FR")
 
     count_en = 0
     count_de = 0
@@ -347,10 +347,10 @@ def meaningful_words_ratio(path):
     for word in words:
         if en.check(word):
             count_en += 1
-        # if de.check(word):
-        #     count_de += 1
-        # if fr.check(word):
-        #     count_fr += 1
+        if de.check(word):
+            count_de += 1
+        if fr.check(word):
+            count_fr += 1
     return max(count_en, count_de, count_fr) / number_of_chars(path)
 
 
