@@ -48,7 +48,8 @@ print("F14 - Number of function definitions divided by F3:", nr_func_definitions
 nr_of_special_js_elements_ratio = nr_of_special_js_elements_ratio(input_file)
 print("F15 - Number of special Javascript elements divided by F3:", nr_of_special_js_elements_ratio)
 
-print("F16 - Number of renamed special JavaScript elements divided by F3:")
+renamed_js_elements_ratio = renamed_js_elements_ratio(input_file)
+print("F16 - Number of renamed special JavaScript elements divided by F3:", renamed_js_elements_ratio)
 
 share_of_encoded_chars = encoded_chars_ratio(input_file)
 print("F17 - Share of encoded characters:", share_of_encoded_chars)

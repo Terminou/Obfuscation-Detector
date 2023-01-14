@@ -259,6 +259,20 @@ def nr_of_special_js_elements_ratio(path):
 
 
 # Feature 16 - Number of renamed special JavaScript elements divided by F3
+def renamed_js_elements_ratio(path):
+    f = open(path)
+    data = f.read()
+    f.close()
+    ast = esprima.parseScript(data)
+    renamed_element_count = 0
+    # traverse the AST and look for renamed elements
+    for node in ast.body:
+        if node.type == "VariableDeclaration":
+            for declarator in node.declarations:
+                if declarator.id.name in ["this", "super", "arguments"]:
+                    renamed_element_count += 1
+    return renamed_element_count / number_of_chars(path)
+
 
 # Feature 17 - Share of encoded characters
 def encoded_chars_ratio(path):
