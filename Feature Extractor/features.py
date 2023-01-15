@@ -252,7 +252,7 @@ def nr_of_special_js_elements_ratio(path):
     count = 0
     for node in tree.body:
         if node.type == 'ExpressionStatement':
-            if node.expression.type == 'Call Expression':
+            if node.expression.type == 'CallExpression':
                 if node.expression.callee.name in special_elements:
                     count += 1
     return count / number_of_chars(path)
