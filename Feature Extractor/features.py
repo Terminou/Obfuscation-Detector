@@ -1,3 +1,4 @@
+import re
 from shannon_entropy import *
 import esprima
 from statistics import *
@@ -280,23 +281,27 @@ def encoded_chars_ratio(path):
     data = f.read()
     f.close()
     # Parse the program using esprima
-    ast = esprima.parseScript(data)
+    # tokenize the code using esprima
+    tokens = esprima.tokenize(data)
 
-    # Count the number of encoded characters in the program
-    encoded_char_count = 0
-    for node in ast.body:
-        if node.type == 'ExpressionStatement':
-            expression = node.expression
-            if expression.type == 'CallExpression':
-                callee = expression.callee
-                if callee.type == 'Identifier' and callee.name == 'decodeURIComponent':
-                    # decodeURIComponent is a function that decodes encoded characters, so
-                    # increment the encoded character count
-                    encoded_char_count += 1
+    # initialize the count
+    count = 0
+
+    # iterate over the tokens
+    for token in tokens:
+        # check if the token is a string literal
+        if token.type == "String":
+            # check if the string has a hexadecimal escape sequence
+            match = re.search(r"\\x[0-9A-Fa-f]{2}", token.value)
+            if match:
+                count += len(token.value)
+            else: #check if the string has a encoded pattern
+                match = re.search(r"^[A-Za-z0-9+/]+={0,2}$", token.value)
+                if match:
+                    count += len(token.value)
 
     # Calculate the share of encoded characters in the program
-    char_count = len(data)
-    encoded_char_share = encoded_char_count / char_count
+    encoded_char_share = count / number_of_chars(path)
     return encoded_char_share
 
 
