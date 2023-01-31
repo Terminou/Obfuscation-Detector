@@ -295,7 +295,7 @@ def encoded_chars_ratio(path):
             match = re.search(r"\\x[0-9A-Fa-f]{2}", token.value)
             if match:
                 count += len(token.value)
-            else: #check if the string has a encoded pattern
+            else:  # check if the string has a encoded pattern
                 match = re.search(r"^[A-Za-z0-9+/]+={0,2}$", token.value)
                 if match:
                     count += len(token.value)
