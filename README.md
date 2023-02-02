@@ -14,11 +14,11 @@ Dataset is taken from https://www.kaggle.com/datasets/fanbyprinciple/obfuscated-
 The features were trained using Weka and the obtained results as follow.
 
 
-| ML Algorithm           | Accuracy |
-|------------------------|----------|
-| Naive Bayes            | 94.84%   |
-| Logistic Regression    | 98.64%   |
-| Support Vector Machine | 99.01%   |
-| Random Forest          | 99.50%   |
-| Ada Boost              | 99.13%   |
-| Lazy k-star            | 99.22%   |
+| ML Algorithm           | Accuracy (45 features)| Accuracy (47 features)|
+|------------------------|-----------------------|-----------------------|
+| Naive Bayes            | 94.47%                | 96.20%                |
+| Logistic Regression    | 98.47%                | 98.76%                | 
+| Support Vector Machine | 97.85%                | 99.13%                |
+| Random Forest          | 99.50%                | 99.55%                |
+| Ada Boost              | 99.01%                | 99.17%                |
+| Lazy k-star            | 98.97%                | 99.22%                |
