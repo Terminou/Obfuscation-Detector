@@ -16,7 +16,7 @@ for i in range(1, 48):
 fields.append('Class')
 
 # Open a file in write mode
-with open('features.csv', 'w', newline='') as csv_file:
+with open('features_45gram.csv', 'w', newline='') as csv_file:
     # Create a CSV writer object
     csv_writer = csv.writer(csv_file)
     csv_writer.writerow(fields)
@@ -71,7 +71,7 @@ with open('features.csv', 'w', newline='') as csv_file:
                 freq_of_common_keyword('valueOf', input_file),
                 freq_of_common_keyword('undefined', input_file),
                 meaningful_words_ratio(input_file),
-                trigram_words_ratio(input_file),
+                (trigram_words_ratio(input_file, 4) + trigram_words_ratio(input_file, 5)) / 2,
                 'Not-obfuscated'
             ]
         )
@@ -85,7 +85,7 @@ files = sorted(os.listdir(directory2), key=str.casefold)[1:]
 
 
 # Open a file in write mode
-with open('features.csv', 'a', newline='') as csv_file:
+with open('features_45gram.csv', 'a', newline='') as csv_file:
     # Create a CSV writer object
     csv_writer = csv.writer(csv_file)
     for file in files:
@@ -139,7 +139,7 @@ with open('features.csv', 'a', newline='') as csv_file:
                     freq_of_common_keyword('valueOf', input_file),
                     freq_of_common_keyword('undefined', input_file),
                     meaningful_words_ratio(input_file),
-                    trigram_words_ratio(input_file),
+                    (trigram_words_ratio(input_file, 4) + trigram_words_ratio(input_file, 5)) / 2,
                     'Obfuscated'
                 ]
             )

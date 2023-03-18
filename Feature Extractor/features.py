@@ -374,12 +374,12 @@ def meaningful_words_ratio(path):
 
 
 # Feature 47 - Trigram words ratio
-def trigram_words_ratio(path):
+def trigram_words_ratio(path, n):
     f = open(path)
     data = f.read()
     f.close()
     # Split the text into a list of tokens
     tokens = data.split()
     # Use the ngrams function to generate the n-grams
-    ngrams_list = list(ngrams(tokens, 3))
+    ngrams_list = list(ngrams(tokens, n))
     return len(ngrams_list) / number_of_chars(path)
